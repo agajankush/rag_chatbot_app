@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from openai import OpenAI
 import psycopg2
-from database import get_db_connection
+from .database import get_db_connection
 from fastapi.middleware.cors import CORSMiddleware
 
 # Load environment variables
