@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from openai import OpenAI
 import psycopg2
 from database import get_db_connection
+from fastapi.middleware.cors import CORSMiddleware
 
 # Load environment variables
 from dotenv import load_dotenv
@@ -20,6 +21,15 @@ TOP_K_CHUNKS = 5
 
 # Create FastAPI app
 app = FastAPI(title="RAG Chatbot API")
+
+# Enable CORS for browser clients (adjust origins for production)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Simple routes to avoid 404s when testing in a browser
 @app.get("/")
