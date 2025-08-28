@@ -1,0 +1,6 @@
+
+# Section 1: Introduction to AI and RAG
+Artificial Intelligence (AI) is a rapidly evolving field. Large Language Models (LLMs) are a key component of modern AI systems, capable of understanding and generating human-like text. Retrieval-Augmented Generation (RAG) enhances LLMs by providing them with external, up-to-date knowledge. This project aims to build a RAG chatbot. Vector databases like pgvector are essential for RAG, as they allow for fast and efficient similarity search on text embeddings.
+
+# Section 2: The RAG Workflow
+The process of building a RAG system involves several steps. First, documents are ingested and split into smaller chunks. Next, these chunks are converted into numerical representations called vector embeddings. Finally, these embeddings are stored in a vector database. When a user asks a question, the system retrieves the most relevant chunks and uses them as context for the LLM to generate an accurate response.
