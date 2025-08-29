@@ -47,8 +47,7 @@ async def chat_get_note():
 # Pydantic model for the user's query
 class Query(BaseModel):
     query: str
-
-# Helper function to generate embedding for a query
+# In your api/main.py file
 def get_query_embedding(text: str) -> list[float]:
     try:
         text = text.replace("\n", " ")
@@ -57,7 +56,11 @@ def get_query_embedding(text: str) -> list[float]:
             model=EMBEDDING_MODEL,
             dimensions=EMBEDDING_DIMENSIONS
         )
-        return response.data[0].embedding
+        if response.data:
+            return response.data[0].embedding
+        else:
+            # Handle the case where no embedding data is returned
+            raise HTTPException(status_code=500, detail="OpenAI returned empty data for embedding.")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error generating query embedding: {e}")
 
