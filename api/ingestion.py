@@ -6,7 +6,7 @@ import psycopg2
 from psycopg2.extras import Json
 from unstructured.partition.auto import partition
 from unstructured.chunking.title import chunk_by_title
-from api.database import get_db_connection
+from database import get_db_connection
 
 # Load environment variables
 load_dotenv(override=True)
